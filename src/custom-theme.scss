@@ -1,0 +1,73 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+// Color palette
+$my-primary-color: (
+  50: #ffeaec,
+  100: #ffcbd1,
+  200: #ffa8b2,
+  300: #ff8593,
+  400: #ff6b7b,
+  500: #ff5164,
+  600: #ff4a5c,
+  700: #ff4052,
+  800: #ff3748,
+  900: #ff2736,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffd4d7,
+  A700: #ffbbbf,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+  ),
+);
+
+$my-accent-color: (
+  50: #fbfbfb,
+  100: #f6f6f6,
+  200: #f0f0f0,
+  300: #eaeaea,
+  400: #e6e6e6,
+  500: #e1e1e1,
+  600: #dddddd,
+  700: #d9d9d9,
+  800: #d5d5d5,
+  900: #cdcdcd,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+  ),
+);
+
+$my-palette-primary: mat.define-palette($my-primary-color);
+$my-palette-accent: mat.define-palette($my-accent-color);
+$my-warn-palette: mat.define-palette(mat.$red-palette);
+
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-palette-primary,
+      accent: $my-palette-accent,
+      warn: $my-warn-palette,
+    ),
+  )
+);
+
+@include mat.all-component-themes($my-theme);

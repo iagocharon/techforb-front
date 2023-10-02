@@ -1,0 +1,69 @@
+<div class="home">
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" #sidenav [opened]="!mobile">
+      <div class="logo"><h1>Unicomer</h1></div>
+      <mat-nav-list
+        ><a
+          mat-list-item
+          (click)="closeSidenav()"
+          routerLink="/home"
+          [routerLinkActive]="['is-active']"
+          ><mat-icon>home</mat-icon> Inicio</a
+        >
+        <a
+          mat-list-item
+          (click)="closeSidenav()"
+          routerLink="/cards"
+          [routerLinkActive]="['is-active']"
+          ><mat-icon>credit_card</mat-icon> Tarjetas</a
+        >
+        <a
+          mat-list-item
+          (click)="closeSidenav()"
+          routerLink="/loans"
+          [routerLinkActive]="['is-active']"
+          ><mat-icon>account_balance</mat-icon> Préstamos</a
+        >
+        <a
+          mat-list-item
+          (click)="closeSidenav()"
+          routerLink="/transactions"
+          [routerLinkActive]="['is-active']"
+          ><mat-icon>sell</mat-icon> Te ofrecemos</a
+        >
+        <a
+          mat-list-item
+          (click)="closeSidenav()"
+          routerLink="/insurance"
+          [routerLinkActive]="['is-active']"
+          ><mat-icon>security</mat-icon> Seguros</a
+        >
+        <a
+          mat-list-item
+          (click)="closeSidenav()"
+          routerLink="/points"
+          [routerLinkActive]="['is-active']"
+          ><mat-icon>redeem</mat-icon> Puntos</a
+        >
+        <a
+          mat-list-item
+          (click)="closeSidenav()"
+          routerLink="/help"
+          [routerLinkActive]="['is-active']"
+          ><mat-icon>support</mat-icon> Ayuda</a
+        >
+        <a
+          mat-list-item
+          (click)="closeSidenav()"
+          routerLink="/logout"
+          (click)="logout()"
+          ><mat-icon>logout</mat-icon> Cerrar Sesión</a
+        >
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-header></app-header>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

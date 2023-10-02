@@ -1,0 +1,58 @@
+<div class="cards" *ngIf="user != undefined">
+  <h1>Tarjetas</h1>
+  <div class="items">
+    <div class="card" *ngFor="let card of user.cards">
+      <div class="issuer">
+        <div class="wrapper">
+          <img
+            *ngIf="card.issuer == 'Visa'"
+            src="../../../assets/cards/visa.png"
+            alt=""
+          />
+          <img
+            *ngIf="card.issuer == 'Mastercard'"
+            src="../../../assets/cards/mastercard.png"
+            alt=""
+          />
+          <img
+            *ngIf="card.issuer == 'American Express'"
+            src="../../../assets/cards/amex.png"
+            alt=""
+          />
+          <img
+            *ngIf="card.issuer == 'Discover'"
+            src="../../../assets/cards/discover.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="number">
+          <p>{{ cardNumber(card.number) }}</p>
+        </div>
+        <div class="name">
+          <p>{{ card.name }}</p>
+        </div>
+        <div class="info">
+          <div class="expiracy">
+            <p>Vence</p>
+            <p class="mono">{{ card.expirationDate }}</p>
+          </div>
+          <div class="cvv">
+            <p>CVV</p>
+            <p class="mono">{{ card.cvv }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="delete">
+        <button mat-icon-button (click)="deleteCard(card.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="add" (click)="addCard()">
+      <button mat-icon-button><mat-icon>add</mat-icon></button>
+      Agregar una tarjeta
+    </div>
+  </div>
+</div>

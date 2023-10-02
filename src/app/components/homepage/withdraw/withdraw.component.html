@@ -1,0 +1,14 @@
+<mat-card>
+  <h1>Retiro</h1>
+  <p>¿Cuánto dinero desea retirar de su cuenta?</p>
+  <mat-form-field>
+    <mat-label>Monto</mat-label>
+    <input matInput [(ngModel)]="ammount" type="number" />
+  </mat-form-field>
+  <div class="actions">
+    <button matDialogClose mat-flat-button>Cancelar</button>
+    <button mat-raised-button class="submit" (click)="withdraw()">
+      Retirar
+    </button>
+  </div>
+</mat-card>

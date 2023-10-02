@@ -1,0 +1,48 @@
+<mat-card class="edit-profile">
+  <h2>Editar Perfil</h2>
+  <form (ngSubmit)="updateProfile()" [formGroup]="user">
+    <div class="line">
+      <mat-form-field>
+        <mat-label>Nombre Completo</mat-label>
+        <input matInput [formControl]="user.controls.name" />
+        <mat-error *ngIf="user.controls.name.hasError('required')">
+          El nombre completo es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="line">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="user.controls.email" />
+        <mat-error *ngIf="user.controls.email.hasError('required')">
+          El email es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="line">
+      <mat-form-field>
+        <mat-label>Teléfono</mat-label>
+        <input matInput [formControl]="user.controls.phone" />
+        <mat-error *ngIf="user.controls.phone.hasError('required')">
+          El teléfono es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="line">
+      <mat-form-field>
+        <mat-label>D.N.I.</mat-label>
+        <input matInput [formControl]="user.controls.dni" />
+        <mat-error *ngIf="user.controls.dni.hasError('required')">
+          El D.N.I. es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="actions">
+      <button matDialogClose mat-flat-button>Cancelar</button>
+      <button mat-raised-button class="submit" (click)="updateProfile()">
+        Guardar
+      </button>
+    </div>
+  </form>
+</mat-card>

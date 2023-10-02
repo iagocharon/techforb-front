@@ -1,0 +1,91 @@
+<mat-card>
+  <h1>Nueva Tarjeta</h1>
+  <form>
+    <div class="line">
+      <div class="issuers">
+        <div
+          class="item"
+          (click)="setIssuer('Visa')"
+          [class.selected]="isSelected('Visa')"
+        >
+          <img src="../../../../assets/cards/visa.png" alt="" />
+        </div>
+        <div
+          class="item"
+          (click)="setIssuer('Mastercard')"
+          [class.selected]="isSelected('Mastercard')"
+        >
+          <img src="../../../../assets/cards/mastercard.png" alt="" />
+        </div>
+        <div
+          class="item"
+          (click)="setIssuer('American Express')"
+          [class.selected]="isSelected('American Express')"
+        >
+          <img src="../../../../assets/cards/amex.png" alt="" />
+        </div>
+        <div
+          class="item"
+          (click)="setIssuer('Discover')"
+          [class.selected]="isSelected('Discover')"
+        >
+          <img src="../../../../assets/cards/discover.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="line">
+      <mat-form-field>
+        <mat-label>Número de Tarjeta</mat-label>
+        <input matInput [formControl]="card.controls.number" />
+        <mat-error *ngIf="card.controls.number.hasError('required')">
+          El número de tarjeta es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="line">
+      <mat-form-field>
+        <mat-label>Nombre del Titular</mat-label>
+        <input matInput [formControl]="card.controls.name" />
+        <mat-error *ngIf="card.controls.name.hasError('required')">
+          El nombre del titular es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="line">
+      <div class="date">
+        <mat-form-field>
+          <mat-label>Mes</mat-label>
+          <mat-select [formControl]="card.controls.month">
+            <mat-option *ngFor="let month of months" [value]="month">{{
+              month
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Año</mat-label>
+          <mat-select [formControl]="card.controls.year">
+            <mat-option *ngFor="let year of years" [value]="year">{{
+              year
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="cvv">
+        <mat-form-field>
+          <mat-label>C.V.V.</mat-label>
+          <input matInput [formControl]="card.controls.cvv" />
+          <mat-error *ngIf="card.controls.cvv.hasError('required')">
+            El C.V.V. es obligatorio
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button matDialogClose mat-flat-button>Cancelar</button>
+      <button mat-raised-button class="submit" (click)="addCard()">
+        Agregar
+      </button>
+    </div>
+  </form>
+</mat-card>

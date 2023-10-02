@@ -1,0 +1,60 @@
+<div class="signup">
+  <div class="inner-wrapper">
+    <h1>Registrarse</h1>
+    <form (ngSubmit)="signup()" [formGroup]="formLogin">
+      <mat-form-field>
+        <mat-label>Nombre de Usuario</mat-label>
+        <input matInput [formControl]="formLogin.controls.username" />
+        <mat-error *ngIf="formLogin.controls.username.hasError('required')">
+          El nombre de usuario es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          type="password"
+          [formControl]="formLogin.controls.password"
+        />
+        <mat-error *ngIf="formLogin.controls.password.hasError('required')">
+          La contraseña es obligatoria
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nombre Completo</mat-label>
+        <input matInput [formControl]="formLogin.controls.name" />
+        <mat-error *ngIf="formLogin.controls.name.hasError('required')">
+          El nombre completo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="formLogin.controls.email" />
+        <mat-error *ngIf="formLogin.controls.email.hasError('required')">
+          El email es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Teléfono</mat-label>
+        <input matInput [formControl]="formLogin.controls.phone" />
+        <mat-error *ngIf="formLogin.controls.phone.hasError('required')">
+          El teléfono es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>D.N.I.</mat-label>
+        <input matInput [formControl]="formLogin.controls.dni" />
+        <mat-error *ngIf="formLogin.controls.dni.hasError('required')">
+          El D.N.I. es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-raised-button type="submit">Enviar</button>
+        <p class="login" routerLink="/auth/login">
+          Ya tenés cuenta? Ingresá acá
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

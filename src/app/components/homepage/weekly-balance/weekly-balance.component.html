@@ -1,0 +1,25 @@
+<div class="top">
+  <h2>Ultima Semana</h2>
+  <div class="legend">
+    <div class="item">
+      <div class="dot this-week"></div>
+      <p>Esta semana</p>
+    </div>
+    <div class="item">
+      <div class="dot last-week"></div>
+      <p>Semana pasada</p>
+    </div>
+  </div>
+</div>
+
+<div class="chart">
+  <canvas
+    baseChart
+    [data]="barChartData"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [type]="'bar'"
+  >
+  </canvas>
+</div>

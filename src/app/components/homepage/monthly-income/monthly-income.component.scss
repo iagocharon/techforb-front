@@ -1,0 +1,9 @@
+.chart {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  canvas {
+    width: 100% !important;
+    height: 80px !important;
+  }
+}

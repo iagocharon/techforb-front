@@ -1,0 +1,31 @@
+<div class="login">
+  <div class="inner-wrapper">
+    <h1>Iniciar Sesión</h1>
+    <form (ngSubmit)="login()" [formGroup]="formLogin">
+      <mat-form-field>
+        <mat-label>Nombre de Usuario</mat-label>
+        <input matInput [formControl]="formLogin.controls.username" />
+        <mat-error *ngIf="formLogin.controls.username.hasError('required')">
+          El nombre de usuario es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          type="password"
+          [formControl]="formLogin.controls.password"
+        />
+        <mat-error *ngIf="formLogin.controls.password.hasError('required')">
+          La contraseña es obligatoria
+        </mat-error>
+      </mat-form-field>
+      <div class="actions">
+        <button mat-raised-button type="submit">Enviar</button>
+        <p class="signup" routerLink="/auth/signup">
+          ¿No tenés cuenta? Registrate acá
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

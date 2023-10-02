@@ -1,0 +1,49 @@
+<div class="history">
+  <h2>Últimas transacciones</h2>
+  <table mat-table [dataSource]="transactionsDatasource">
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Tipo</th>
+      <td mat-cell *matCellDef="let transaction">
+        <mat-icon class="icon deposit" *ngIf="transaction.type === 'DEPOSIT'"
+          >arrow_downward</mat-icon
+        >
+        <mat-icon class="icon withdraw" *ngIf="transaction.type === 'WITHDRAW'"
+          >arrow_upward</mat-icon
+        >
+        <mat-icon class="icon" *ngIf="transaction.type === 'TRANSFER'"
+          >sync_alt</mat-icon
+        >
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let transaction">
+        <p *ngIf="transaction.type === 'DEPOSIT'">Depósito</p>
+        <p *ngIf="transaction.type === 'WITHDRAW'">Retiro</p>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef>Total</th>
+      <td mat-cell *matCellDef="let transaction">
+        <p>{{ normalizeMoney(transaction.amount) }}</p>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let transaction">
+        <p class="date">{{ getDate(transaction.date) }}</p>
+        <p class="time">{{ getTime(transaction.date) }}</p>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    #paginator
+    [hidePageSize]="true"
+    [pageSizeOptions]="[5, 10, 25]"
+    showFirstLastButtons
+    [pageIndex]="0"
+    [length]="transactionsDatasource!.data!.length"
+  ></mat-paginator>
+</div>

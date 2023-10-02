@@ -1,0 +1,38 @@
+<header *ngIf="user != undefined">
+  <div class="search" *ngIf="!mobile">
+    <mat-icon>search</mat-icon>
+    <input type="text" placeholder="Buscar" />
+  </div>
+  <div class="menu-button" (click)="toggleSidenav()" *ngIf="mobile">
+    <mat-icon>menu</mat-icon>
+  </div>
+
+  <div class="mobile-dropdown" *ngIf="mobile">
+    <button [matMenuTriggerFor]="mobileMenu">
+      <mat-icon>arrow_drop_down</mat-icon>Iago Charon
+    </button>
+  </div>
+
+  <div class="menu" *ngIf="!mobile">
+    <button mat-icon-button><mat-icon>settings</mat-icon></button>
+    <button mat-icon-button><mat-icon>notifications</mat-icon></button>
+    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>person</mat-icon>
+    </button>
+    <p>{{ user.name }}</p>
+  </div>
+</header>
+
+<mat-menu #userMenu="matMenu">
+  <button (click)="editProfile()" mat-menu-item>
+    <mat-icon>edit</mat-icon>
+    <span>Editar Perfil</span>
+  </button>
+</mat-menu>
+
+<mat-menu #mobileMenu="matMenu">
+  <button (click)="editProfile()" mat-menu-item>
+    <mat-icon>edit</mat-icon>
+    <span>Editar Perfil</span>
+  </button>
+</mat-menu>

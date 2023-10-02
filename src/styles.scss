@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+:root {
+  --font-family: "Lexend", sans-serif;
+  --font-mono: "Courier Prime", monospace;
+
+  --primary-color: #ff5164;
+  --primary-color-trans: #ff5164ee;
+  --primary-color-super-trans: #ff516422;
+
+  --red: #ff5733;
+  --green: #4caf50;
+}
+
+* {
+  font-family: var(--font-family);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+mat-icon {
+  font-family: "Material Icons" !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+//Sidenav
+mat-nav-list {
+  .mdc-list-item__primary-text {
+    transition: all 0.2s ease-in-out !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .is-active,
+  .is-active:hover {
+    .mdc-list-item__primary-text {
+      color: white !important;
+    }
+  }
+  a:hover {
+    .mdc-list-item__primary-text {
+      transition: all 0.2s ease-in-out !important;
+      color: var(--primary-color) !important;
+    }
+  }
+}
+
+//Search
+.search {
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+}
+
+//Dialog
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 20px !important;
+}
+
+//History
+.history {
+  thead {
+    display: none !important;
+  }
+  .mdc-data-table__row:nth-child(even) {
+    background-color: #eee;
+  }
+  .mdc-data-table__row:nth-child(odd) {
+    background-color: white;
+  }
+}

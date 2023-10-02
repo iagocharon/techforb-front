@@ -1,0 +1,74 @@
+mat-card {
+  width: 450px;
+  padding: 30px;
+  border-radius: 20px;
+  .line {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    mat-form-field {
+      width: 100%;
+    }
+    .date {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 50%;
+      gap: 10px;
+    }
+    .cvv {
+      width: 50%;
+    }
+    .issuers {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 20px;
+      .item {
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        border: solid 1px whitesmoke;
+        background-color: white;
+        opacity: 0.8;
+        &.selected {
+          background-color: whitesmoke;
+          opacity: 1;
+        }
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+  .actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    button {
+      font-size: 1.1em;
+      padding: 20px;
+      &.submit {
+        background-color: var(--primary-color);
+        color: white;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  mat-card {
+    width: 100%;
+  }
+}

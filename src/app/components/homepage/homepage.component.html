@@ -1,0 +1,156 @@
+<div class="homepage" *ngIf="user != undefined">
+  <h1>Inicio</h1>
+  <div class="top-row">
+    <div class="card">
+      <div class="balance">
+        <div class="info">
+          <p>Mi saldo</p>
+          <p class="money" *ngIf="!hiddenBalance">
+            {{ normalizeMoney(user.balance) }}
+          </p>
+          <p class="money" *ngIf="hiddenBalance">$ *********</p>
+        </div>
+        <div class="hide">
+          <button mat-icon-button (click)="toggleVisibility()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512"
+              *ngIf="hiddenBalance"
+            >
+              <path
+                fill="currentColor"
+                d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z"
+              />
+            </svg>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 512"
+              *ngIf="!hiddenBalance"
+            >
+              <path
+                fill="currentColor"
+                d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zm151 118.3C226 97.7 269.5 80 320 80c65.2 0 118.8 29.6 159.9 67.7C518.4 183.5 545 226 558.6 256c-12.6 28-36.6 66.8-70.9 100.9l-53.8-42.2c9.1-17.6 14.2-37.5 14.2-58.7c0-70.7-57.3-128-128-128c-32.2 0-61.7 11.9-84.2 31.5l-46.1-36.1zM394.9 284.2l-81.5-63.9c4.2-8.5 6.6-18.2 6.6-28.3c0-5.5-.7-10.9-2-16c.7 0 1.3 0 2 0c44.2 0 80 35.8 80 80c0 9.9-1.8 19.4-5.1 28.2zm9.4 130.3C378.8 425.4 350.7 432 320 432c-65.2 0-118.8-29.6-159.9-67.7C121.6 328.5 95 286 81.4 256c8.3-18.4 21.5-41.5 39.4-64.8L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5l-41.9-33zM192 256c0 70.7 57.3 128 128 128c13.3 0 26.1-2 38.2-5.8L302 334c-23.5-5.4-43.1-21.2-53.7-42.3l-56.1-44.2c-.2 2.8-.3 5.6-.3 8.5z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="wrapper">
+          <button mat-icon-button (click)="deposit()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path
+                fill="currentColor"
+                d="M256 48c114.9 0 208 93.1 208 208c0 13.3 10.7 24 24 24s24-10.7 24-24C512 114.6 397.4 0 256 0S0 114.6 0 256c0 13.3 10.7 24 24 24s24-10.7 24-24C48 141.1 141.1 48 256 48zM377.6 279.7l-104-112c-4.5-4.9-10.9-7.7-17.6-7.7s-13 2.8-17.6 7.7l-104 112c-9 9.7-8.5 24.9 1.3 33.9s24.9 8.5 33.9-1.3L232 245.1 232 488c0 13.3 10.7 24 24 24s24-10.7 24-24l0-242.9 62.4 67.2c9 9.7 24.2 10.3 33.9 1.3s10.3-24.2 1.3-33.9z"
+              />
+            </svg>
+          </button>
+          <p>Depósito</p>
+        </div>
+
+        <div class="wrapper">
+          <button mat-icon-button (click)="withdraw()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path
+                fill="currentColor"
+                d="M256 48C141.1 48 48 141.1 48 256c0 13.3-10.7 24-24 24s-24-10.7-24-24C0 114.6 114.6 0 256 0S512 114.6 512 256c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-114.9-93.1-208-208-208zM134.4 392.3c-9-9.7-8.5-24.9 1.3-33.9s24.9-8.5 33.9 1.3L232 426.9 232 184c0-13.3 10.7-24 24-24s24 10.7 24 24l0 242.9 62.4-67.2c9-9.7 24.2-10.3 33.9-1.3s10.3 24.2 1.3 33.9l-104 112c-4.5 4.9-10.9 7.7-17.6 7.7s-13-2.8-17.6-7.7l-104-112z"
+              />
+            </svg>
+          </button>
+          <p>Retiro</p>
+        </div>
+        <div class="wrapper">
+          <button mat-icon-button (click)="transfer()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+              <path
+                fill="currentColor"
+                d="M558.1 64L535 41c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l64 64c4.5 4.5 7 10.6 7 17s-2.5 12.5-7 17l-64 64c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l23-23-64.6 0 0 0H160v16c0 35.3-28.7 64-64 64H80v93.5L50.7 314.7 32 333.5V128c0-35.3 28.7-64 64-64H383.6l.4 0 174.1 0zM560 320V226.5l29.3-29.3L608 178.5V384c0 35.3-28.7 64-64 64H146.5l0 0-64.6 0 23 23c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L7 441c-4.5-4.5-7-10.6-7-17s2.5-12.5 7-17l64-64c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-23 23L256 400c.1 0 .3 0 .4 0H480V384c0-35.3 28.7-64 64-64h16zM320 160a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"
+              />
+            </svg>
+          </button>
+          <p>Transferencia</p>
+        </div>
+        <div class="wrapper">
+          <button mat-icon-button routerLink="/cards">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+              <path
+                fill="currentColor"
+                d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"
+              />
+            </svg>
+          </button>
+          <p>Tarjetas</p>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="title">
+        <div class="inner-wrapper">
+          <div class="icon">
+            <mat-icon>trending_up</mat-icon>
+          </div>
+          <div class="info">
+            <p>Ingresos</p>
+            <p class="money">{{ normalizeMoney(monthlyIncome) }}</p>
+          </div>
+        </div>
+        <div
+          class="change"
+          [class.increase]="increasedIncome"
+          [class.decrease]="!increasedIncome"
+        >
+          <div class="arrow">
+            <mat-icon class="up" *ngIf="increasedIncome"
+              >arrow_drop_up</mat-icon
+            >
+            <mat-icon class="down" *ngIf="!increasedIncome"
+              >arrow_drop_down</mat-icon
+            >
+          </div>
+          <p class="percentage">{{ incomeChange }}</p>
+          <p>Mes Pasado</p>
+        </div>
+      </div>
+      <app-monthly-income></app-monthly-income>
+    </div>
+    <div class="chart-card">
+      <div class="title">
+        <div class="inner-wrapper">
+          <div class="icon">
+            <mat-icon>trending_down</mat-icon>
+          </div>
+          <div class="info">
+            <p>Egresos</p>
+            <p class="money">{{ normalizeMoney(monthlyExpenses) }}</p>
+          </div>
+        </div>
+        <div
+          class="change"
+          [class.increase]="increasedExpenses"
+          [class.decrease]="!increasedExpenses"
+        >
+          <div class="arrow">
+            <mat-icon class="up" *ngIf="increasedExpenses"
+              >arrow_drop_up</mat-icon
+            >
+            <mat-icon class="down" *ngIf="!increasedExpenses"
+              >arrow_drop_down</mat-icon
+            >
+          </div>
+          <p class="percentage">{{ expenseChange }}</p>
+          <p>Mes Pasado</p>
+        </div>
+      </div>
+      <app-monthly-expenses></app-monthly-expenses>
+    </div>
+  </div>
+  <div class="second-row">
+    <div class="weekly-balance">
+      <app-weekly-balance></app-weekly-balance>
+    </div>
+    <div class="history">
+      <app-history></app-history>
+    </div>
+  </div>
+</div>

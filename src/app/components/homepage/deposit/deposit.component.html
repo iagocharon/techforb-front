@@ -1,0 +1,14 @@
+<mat-card>
+  <h1>Depósito</h1>
+  <p>¿Cuánto dinero desea ingresar a su cuenta?</p>
+  <mat-form-field>
+    <mat-label>Monto</mat-label>
+    <input matInput [(ngModel)]="ammount" type="number" />
+  </mat-form-field>
+  <div class="actions">
+    <button matDialogClose mat-flat-button>Cancelar</button>
+    <button mat-raised-button class="submit" (click)="deposit()">
+      Depositar
+    </button>
+  </div>
+</mat-card>
